@@ -1,4 +1,4 @@
-# task-box
+# Storybook components
 
 ## Project setup
 ```
