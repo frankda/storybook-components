@@ -1,5 +1,6 @@
 # Storybook components
 
+This project is for building component driven project
 ## Project setup
 ```
 npm install
