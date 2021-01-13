@@ -29,12 +29,24 @@
 </template>
 
 <script>
-import PureTaskList from './PureTaskList';
-import { mapState. mapActions } from 'vuex';
-
+import Task from "./Task";
 export default {
-    components: { PureTaskList },
-    methods: mapActions(['archiveTask', 'pinTask']),
-    computed: mapState(['tasks'])
+    name: "PureTaskList",
+    components: { Task },
+    props: {
+        tasks: { type: Array, required: true, defautl: () => [] },
+        loading: { type: Boolean, default: false }
+    },
+    computed: {
+        isEmpty() {
+            return this.tasks.length === 0;
+        },
+        tasksInOrder() {
+            return [
+                ...this.tasks.filter(t => t.state === "TASK_PINNED"),
+                ...this.tasks.filter(t => t.state !== "TASK_PINNED")
+            ];
+        }
+    }
 };
 </script>
